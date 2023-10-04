@@ -1,6 +1,7 @@
 package logic;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class MorseCodeLogic {
 
@@ -9,7 +10,6 @@ public class MorseCodeLogic {
     // Create a HashMap object called morseCodes
     public String getMorseCodeFromLetter(Character ch) {
 
-        //TODO: Implement exception handling for null value Char input and non-Chars
         String returnValue = "";
 
         try {
@@ -19,16 +19,32 @@ public class MorseCodeLogic {
             for (Character i : morseCodes.keySet()) {
                 if (i == ch) {
                     returnValue = morseCodes.get(i);
-                    return returnValue;
                 }
             }
 
-        } catch (Exception e)
-        {
-            System.out.println("Something went wrong, check that the input value is valid.");
+        } catch (Exception e) {
+            System.out.println("Caught an exception of type: " + e + ". Check that input is correct.");
         }
         return returnValue;
     }
+
+    public char getLetterFromMorseCode(String morseCode) {
+        char returnKey = ' ';
+        HashMap<Character, String> morseCodes = getCharacterStringHashMap();
+
+        try {
+            //Loops through each entry (key, value pair) in a entrySet to get the "getValue" method
+            for (Map.Entry<Character, String> entry : morseCodes.entrySet()) {
+                if (entry.getValue().equals(morseCode)) {
+                    returnKey = entry.getKey();
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Caught an exception of type: " + e + ". Check that input is correct.");
+        }
+        return returnKey;
+    }
+
 
     private static HashMap<Character, String> getCharacterStringHashMap() {
 
@@ -76,6 +92,5 @@ public class MorseCodeLogic {
         morseCodes.put('?', "**--**");
         return morseCodes;
     }
-
 
 }

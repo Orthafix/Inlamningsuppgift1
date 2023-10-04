@@ -6,17 +6,30 @@ import logic.MorseCodeLogic;
 
 public class TestMorseCodeLogic {
 
-    //TODO: Create a unit test for morse code using a hashmap implementation
     @Test
     public void TestLetterToMorseCode()
     {
         //Arrange
         MorseCodeLogic mcLogic = new MorseCodeLogic();
-        char ch = '@';
+        char ch = 'A';
         String expected = "*-";
 
         //Act
         String actual = mcLogic.getMorseCodeFromLetter(ch);
+
+        //Assert
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void TestMorseCodeToLetter() throws Exception {
+        //Arrange
+        MorseCodeLogic mcLogic = new MorseCodeLogic();
+        String morseCode = "*-";
+        char expected = 'A';
+
+        //Act
+        char actual = mcLogic.getLetterFromMorseCode(morseCode);
 
         //Assert
         Assertions.assertEquals(expected, actual);
