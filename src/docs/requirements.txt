@@ -13,14 +13,14 @@ och engelska till morsekod.
 testfall.
 
 Mer krav:
-* Skilj på morsekod genom mellanslag
+* Skilj på morsekod genom mellanslag - Check
 * Skilj på ord med mellanslag för engelska och
-semikolon för morsekod
+semikolon för morsekod - Check
 t.ex. **** * *--- ; **** * *--- = HEJ HEJ
 HEJ HEJ = **** * *--- ; **** * *---
 * Skapa minst två felhanteringar i systemet som fångar
 två saker som användaren kan göra som går utanför
-det vanliga användandet av systemet.
+det vanliga användandet av systemet. - Check
 
 Tips:
 
