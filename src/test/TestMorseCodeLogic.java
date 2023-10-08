@@ -5,8 +5,24 @@ import org.junit.jupiter.api.Assertions;
 import logic.MorseCodeLogic;
 
 public class TestMorseCodeLogic {
+    @Test
+    public void TestMorseCodesToWords() {
+        //Arrange
+        MorseCodeLogic mcLogic = new MorseCodeLogic();
 
-    //TODO: Create a unit test for morse code from english words to morse
+        //Notera här att orden innehåller gemener som ska hanteras i logiken via toUpper().
+        String morse = "**** * *--- ; **** * *--- ";
+        String expectedBad = "Tjaba tja";
+        String expected = "HEJ HEJ";
+
+        //Act
+        String actual = mcLogic.getWordsFromMorseCodes(morse);
+
+        //Assert
+        Assertions.assertEquals(expected, actual);
+        Assertions.assertNotEquals(expectedBad, actual);
+    }
+
     @Test
     public void TestWordsToMorseCodes() {
         //Arrange
@@ -40,7 +56,7 @@ public class TestMorseCodeLogic {
     }
 
     @Test
-    public void TestMorseCodeToLetter() throws Exception {
+    public void TestMorseCodeToLetter() {
         //Arrange
         MorseCodeLogic mcLogic = new MorseCodeLogic();
         String morseCode = "*- ";
@@ -55,5 +71,4 @@ public class TestMorseCodeLogic {
         Assertions.assertNotEquals(expectedBad, actual);
     }
 
-    //TODO: Create a unit test for morse code from morse to english
 }

@@ -4,13 +4,13 @@ Krav :
 * Skriv ett program som gör om morsekod till engelska
 och engelska till morsekod.
 * Skriv programmet med minst två klasser:
-    * En logikklass
+    * En logikklass - check
     * En klass med en main-metod som också läser in
       text och skriver ut text (som den hämtar ifrån
-      logikklasen)
-* Använd den internationella morsekoden (se slide 4)
+      logikklasen) - check
+* Använd den internationella morsekoden (se slide 4) - check
 * Utveckla programmet i TDD och skriv minst 5 JUnit-
-testfall.
+testfall. - check
 
 Mer krav:
 * Skilj på morsekod genom mellanslag - Check
