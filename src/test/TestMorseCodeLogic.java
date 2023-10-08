@@ -5,14 +5,13 @@ import org.junit.jupiter.api.Assertions;
 import logic.MorseCodeLogic;
 
 public class TestMorseCodeLogic {
+
     @Test
     public void TestMorseCodesToWords() {
         //Arrange
         MorseCodeLogic mcLogic = new MorseCodeLogic();
 
-        //Notera här att orden innehåller gemener som ska hanteras i logiken via toUpper().
         String morse = "**** * *--- ; **** * *--- ";
-        String expectedBad = "Tjaba tja";
         String expected = "HEJ HEJ";
 
         //Act
@@ -20,43 +19,86 @@ public class TestMorseCodeLogic {
 
         //Assert
         Assertions.assertEquals(expected, actual);
-        Assertions.assertNotEquals(expectedBad, actual);
+    }
+
+    @Test
+    public void TestBadMorseCodesToWords() {
+        //Bad morse code will yield null output
+
+        //Arrange
+        MorseCodeLogic mcLogic = new MorseCodeLogic();
+
+        String morse = "***. ***/";
+        String expected = "";
+
+        //Act
+        String actual = mcLogic.getWordsFromMorseCodes(morse);
+
+        //Assert
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void TestWordsToMorseCodes() {
         //Arrange
         MorseCodeLogic mcLogic = new MorseCodeLogic();
-        String words = "Hej Hej"; //Notera här att orden innehåller gemener som ska hanteras i logiken via toUpper().
+        String words = "Hej Hej"; //Notera här att orden innehåller gemener som hanteras i logiken via toUpper().
         String expected = "**** * *--- ; **** * *---";
-        String expectedBad = "_*_*____";
 
         //Act
         String actual = mcLogic.getMorseCodesFromWords(words);
 
         //Assert
         Assertions.assertEquals(expected, actual);
-        Assertions.assertNotEquals(expectedBad, actual);
     }
 
     @Test
-    public void TestLetterToMorseCode() {
+    public void TestBadWordsToMorseCodes() {
+        //Bad letters will yield empty output
+
+        //Arrange
+        MorseCodeLogic mcLogic = new MorseCodeLogic();
+        String words = "&%¤";
+        String expected = "";
+
+        //Act
+        String actual = mcLogic.getMorseCodesFromWords(words);
+
+        //Assert
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void TestOneLetterToMorseCode() {
         //Arrange
         MorseCodeLogic mcLogic = new MorseCodeLogic();
         char ch = 'A';
         String expected = "*- ";
-        String expectedBad = "_*_*____";
 
         //Act
-        String actual = mcLogic.getMorseCodeFromLetter(ch);
+        String actual = mcLogic.getOneMorseCodeFromLetter(ch);
 
         //Assert
         Assertions.assertEquals(expected, actual);
-        Assertions.assertNotEquals(expectedBad, actual);
     }
 
     @Test
-    public void TestMorseCodeToLetter() {
+    public void TestOneBadLetterToMorseCode() {
+        //Bad letter results in empty result
+        //Arrange
+        MorseCodeLogic mcLogic = new MorseCodeLogic();
+        char ch = '@';
+        String expected = "";
+
+        //Act
+        String actual = mcLogic.getOneMorseCodeFromLetter(ch);
+
+        //Assert
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void TestOneMorseCodeToLetter() {
         //Arrange
         MorseCodeLogic mcLogic = new MorseCodeLogic();
         String morseCode = "*- ";
@@ -64,11 +106,26 @@ public class TestMorseCodeLogic {
         char expectedBad = '$';
 
         //Act
-        char actual = mcLogic.getLetterFromMorseCode(morseCode);
+        char actual = mcLogic.getOneLetterFromMorseCode(morseCode);
 
         //Assert
         Assertions.assertEquals(expected, actual);
         Assertions.assertNotEquals(expectedBad, actual);
+    }
+
+    @Test
+    public void TestOneBadMorseCodeToLetter() {
+        //Bad letters will result in empty morse code
+        //Arrange
+        MorseCodeLogic mcLogic = new MorseCodeLogic();
+        String morseCode = "%¤";
+        char expected = ' ';
+
+        //Act
+        char actual = mcLogic.getOneLetterFromMorseCode(morseCode);
+
+        //Assert
+        Assertions.assertEquals(expected, actual);
     }
 
 }
