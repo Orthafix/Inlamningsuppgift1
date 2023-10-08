@@ -20,7 +20,6 @@ public class MorseCodeTranslator {
                     break;
                 System.out.println();
 
-                //TODO: Add exception handling for numeric input
                 if (menuNr.equals("1")) {
                     System.out.print("Type words in English and translate it in morse code or type Quit to exit the program: ");
                     System.out.println();
@@ -45,7 +44,7 @@ public class MorseCodeTranslator {
                     System.out.println("Type 1 to translate from english to Morse or 2 to translate from Morse to English.");
             }
         } catch (Exception e) {
-            System.out.println("Incorrect input - start over and again.");
+            System.out.println("Incorrect input - start over again.");
         }
 
     }

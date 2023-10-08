@@ -13,12 +13,11 @@ public class MorseCodeLogic {
         String[] morseSingleSplit; //empty declaration
 
         try {
-            for(String morse: morseCodesSplit) {
-                //TODO: Implement extra loop that checks each morse to return one letter at a time
+            for (String morse : morseCodesSplit) {
+
                 morseSingleSplit = morse.split(" ");
-                for (String singleMorse:morseSingleSplit)
-                {
-                    returnWords.append(getLetterFromMorseCode(singleMorse+" "));
+                for (String singleMorse : morseSingleSplit) {
+                    returnWords.append(getOneLetterFromMorseCode(singleMorse + " "));
                 }
 
             }
@@ -37,7 +36,7 @@ public class MorseCodeLogic {
                     returnMorseCodes.append("; ");
                 } else
 
-                    returnMorseCodes.append(getMorseCodeFromLetter(words.toUpperCase().charAt(i)));
+                    returnMorseCodes.append(getOneMorseCodeFromLetter(words.toUpperCase().charAt(i)));
             }
         } catch (
                 Exception e) {
@@ -46,8 +45,7 @@ public class MorseCodeLogic {
         return returnMorseCodes.toString().stripTrailing();
     }
 
-    //Section Single Morse-code and Single Letter Operations
-    public String getMorseCodeFromLetter(Character ch) {
+    public String getOneMorseCodeFromLetter(Character ch) {
 
         String returnValue = "";
 
@@ -67,7 +65,7 @@ public class MorseCodeLogic {
         return returnValue;
     }
 
-    public char getLetterFromMorseCode(String morseCode) {
+    public char getOneLetterFromMorseCode(String morseCode) {
 
         char returnKey = ' ';
         HashMap<Character, String> morseCodes = getCharacterStringHashMap();
@@ -85,7 +83,7 @@ public class MorseCodeLogic {
         return returnKey;
     }
 
-    // Hashmapping
+    // Hashmap for morse-code and letters (declared as private since it is only used in this class)
     private static HashMap<Character, String> getCharacterStringHashMap() {
 
         HashMap<Character, String> morseCodes = new HashMap<>();
