@@ -5,9 +5,48 @@ import java.util.Map;
 
 public class MorseCodeLogic {
 
-    //TODO: Implement morse code logic that return a hashmap according to the International Morse Code
-    // First implement so that one of the morse codes is translated to a letter, and go from there
-    // Create a HashMap object called morseCodes
+    public String getWordsFromMorseCodes(String morseParam) {
+
+        StringBuilder returnWords = new StringBuilder();
+
+        String[] morseCodesSplit = morseParam.split(";"); //split by word
+        String[] morseSingleSplit; //empty declaration
+
+        try {
+            for(String morse: morseCodesSplit) {
+                //TODO: Implement extra loop that checks each morse to return one letter at a time
+                morseSingleSplit = morse.split(" ");
+                for (String singleMorse:morseSingleSplit)
+                {
+                    returnWords.append(getLetterFromMorseCode(singleMorse+" "));
+                }
+
+            }
+        } catch (Exception e) {
+            System.out.println("Caught an exception of type: " + e + ". Check that input is correct.");
+        }
+        return returnWords.toString().toUpperCase().stripTrailing();
+    }
+
+    public String getMorseCodesFromWords(String words) {
+
+        StringBuilder returnMorseCodes = new StringBuilder();
+        try {
+            for (int i = 0; i < words.length(); i++) {
+                if (words.charAt(i) == ' ') {
+                    returnMorseCodes.append("; ");
+                } else
+
+                    returnMorseCodes.append(getMorseCodeFromLetter(words.toUpperCase().charAt(i)));
+            }
+        } catch (
+                Exception e) {
+            System.out.println("Caught an exception of type: " + e + ". Check that input is correct.");
+        }
+        return returnMorseCodes.toString().stripTrailing();
+    }
+
+    //Section Single Morse-code and Single Letter Operations
     public String getMorseCodeFromLetter(Character ch) {
 
         String returnValue = "";
@@ -15,7 +54,7 @@ public class MorseCodeLogic {
         try {
             HashMap<Character, String> morseCodes = getCharacterStringHashMap();
 
-            //Loop through morse code KeySets and pick any to retrieve it's value
+            //Loop through morse code KeySets and pick any to retrieve its value
             for (Character i : morseCodes.keySet()) {
                 if (i == ch) {
                     returnValue = morseCodes.get(i);
@@ -29,6 +68,7 @@ public class MorseCodeLogic {
     }
 
     public char getLetterFromMorseCode(String morseCode) {
+
         char returnKey = ' ';
         HashMap<Character, String> morseCodes = getCharacterStringHashMap();
 
@@ -45,27 +85,10 @@ public class MorseCodeLogic {
         return returnKey;
     }
 
-    public String getMorseCodesFromWords(String words) {
-
-        StringBuilder returnMorseCodes = new StringBuilder();
-
-        try {
-            for (int i = 0; i < words.length(); i++) {
-                if (words.charAt(i) == ' ') {
-                    returnMorseCodes.append("; ");
-                } else
-                    returnMorseCodes.append(getMorseCodeFromLetter(words.toUpperCase().charAt(i)));
-            }
-        } catch (
-                Exception e) {
-            System.out.println("Caught an exception of type: " + e + ". Check that input is correct.");
-        }
-        return returnMorseCodes.toString().stripTrailing();
-    }
-
+    // Hashmapping
     private static HashMap<Character, String> getCharacterStringHashMap() {
 
-        HashMap<Character, String> morseCodes = new HashMap<Character, String>();
+        HashMap<Character, String> morseCodes = new HashMap<>();
 
         // Add keys and values (Letter, Morse code)
         morseCodes.put('A', "*- ");
