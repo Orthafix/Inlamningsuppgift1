@@ -111,7 +111,7 @@ public class MorseCodeLogic {
         morseCodes.put('T', "- ");
         morseCodes.put('U', "**- ");
         morseCodes.put('V', "***- ");
-        morseCodes.put('w', "*-- ");
+        morseCodes.put('W', "*-- ");
         morseCodes.put('X', "-**- ");
         morseCodes.put('Y', "-*-- ");
         morseCodes.put('Z', "--** ");

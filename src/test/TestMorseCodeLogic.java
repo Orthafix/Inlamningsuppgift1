@@ -7,6 +7,38 @@ import logic.MorseCodeLogic;
 public class TestMorseCodeLogic {
 
     @Test
+    public void TestAllLettersToMorseCodes() {
+        //Arrange
+        MorseCodeLogic mcLogic = new MorseCodeLogic();
+
+        String letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.,?";
+        String expected = "*- -*** -*-* -** * **-* --* **** ** *--- -*- *-** -- -* --- *--* --*- *-* *** - **- ***- " +
+                "*-- -**- -*-- --** *---- **--- ***-- ****- ***** -**** --*** ---** ----* ----- *-*-*- --**-- **--**";
+
+        //Act
+        String actual = mcLogic.getMorseCodesFromWords(letters);
+
+        //Assert
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void TestAllMorseCodesToLetters() {
+        //Arrange
+        MorseCodeLogic mcLogic = new MorseCodeLogic();
+
+        String morse = "*- -*** -*-* -** * **-* --* **** ** *--- -*- *-** -- -* --- *--* --*- *-* *** - **- ***- *-- " +
+                "-**- -*-- --** *---- **--- ***-- ****- ***** -**** --*** ---** ----* ----- *-*-*- --**-- **--**";
+        String expected = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890.,?";
+
+        //Act
+        String actual = mcLogic.getWordsFromMorseCodes(morse);
+
+        //Assert
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void TestMorseCodesToWords() {
         //Arrange
         MorseCodeLogic mcLogic = new MorseCodeLogic();
@@ -103,14 +135,12 @@ public class TestMorseCodeLogic {
         MorseCodeLogic mcLogic = new MorseCodeLogic();
         String morseCode = "*- ";
         char expected = 'A';
-        char expectedBad = '$';
 
         //Act
         char actual = mcLogic.getOneLetterFromMorseCode(morseCode);
 
         //Assert
         Assertions.assertEquals(expected, actual);
-        Assertions.assertNotEquals(expectedBad, actual);
     }
 
     @Test
