@@ -54,6 +54,39 @@ public class TestMorseCodeLogic {
     }
 
     @Test
+    public void TestMorseCodeToLoremIpsum() {
+        //Arrange
+        MorseCodeLogic mcLogic = new MorseCodeLogic();
+
+        String morse = "*-** --- *-* * -- ; ** *--* *** **- -- ; -** --- *-** --- *-* ; *** ** - ; *- -- * - --**-- ; " +
+                "-*-* --- -* *** * -*-* - * - **- *-* ; *- -** ** *--* ** *** -*-* ** -* --* ; * *-** ** - --**-- ; " +
+                "*** * -** ; -** --- ; * ** **- *** -- --- -** ; - * -- *--* --- *-* ; ** -* -*-* ** -** ** -** **- -* - " +
+                "; **- - ; *-** *- -*** --- *-* * ; * - ; -** --- *-** --- *-* * ; -- *- --* -* *- ; *- *-** ** --*- **- " +
+                "*- *-*-*- ; **- - ; * -* ** -- ; *- -** ; -- ** -* ** -- ; ***- * -* ** *- -- --**-- ; --*- **- ** *** " +
+                "; -* --- *** - *-* **- -** ; * -**- * *-* -*-* ** - *- - ** --- -* ; **- *-** *-** *- -- -*-* --- ; " +
+                "*-** *- -*** --- *-* ** *** ; -* ** *** ** ; **- - ; *- *-** ** --*- **- ** *--* ; * -**- ; * *- ; " +
+                "-*-* --- -- -- --- -** --- ; -*-* --- -* *** * --*- **- *- - *-*-*- ; -** **- ** *** ; *- **- - * ; " +
+                "** *-* **- *-* * ; -** --- *-** --- *-* ; ** -* ; *-* * *--* *-* * **** * -* -** * *-* ** - ; ** -* ; " +
+                "***- --- *-** **- *--* - *- - * ; ***- * *-** ** - ; * *** *** * ; -*-* ** *-** *-** **- -- ; -** --- " +
+                "*-** --- *-* * ; * **- ; **-* **- --* ** *- - ; -* **- *-** *-** *- ; *--* *- *-* ** *- - **- " +
+                "*-* *-*-*- ; * -**- -*-* * *--* - * **- *-* ; *** ** -* - ; --- -*-* -*-* *- * -*-* *- - ; -*-* **- " +
+                "*--* ** -** *- - *- - ; -* --- -* ; *--* *-* --- ** -** * -* - --**-- ; *** **- -* - ; ** -* ; " +
+                "-*-* **- *-** *--* *- ; --*- **- ** ; --- **-* **-* ** -*-* ** *- ; -** * *** * *-* **- -* - ; -- --- " +
+                "*-** *-** ** - ; *- -* ** -- ; ** -** ; * *** - ; *-** *- -*** --- *-* **- -- *-*-*-";
+        String expected = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut " +
+                "labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi " +
+                "ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse " +
+                "cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa " +
+                "qui officia deserunt mollit anim id est laborum.";
+
+        //Act
+        String actual = mcLogic.getWordsFromMorseCodes(morse);
+
+        //Assert
+        Assertions.assertEquals(expected.toUpperCase(), actual);
+    }
+
+    @Test
     public void TestBadMorseCodesToWords() {
         //Bad morse code will yield null output
 

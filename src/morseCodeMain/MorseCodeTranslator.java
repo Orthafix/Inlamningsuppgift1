@@ -13,7 +13,8 @@ public class MorseCodeTranslator {
         try {
             while (menuReel) {
                 System.out.println("This is a Morse Code translator. ");
-                System.out.println("********** Select 1 to translate from english to morse code. \n" + "********** Or select 2 to translate from morsecode to english: ");
+                System.out.print("********** Select 1 to translate from english to morse code. \n" +
+                        "********** Or select 2 to translate from morsecode to english: ");
                 String menuNr = scan.nextLine().toUpperCase();
 
                 if (menuNr.equals("QUIT")) break;
@@ -48,7 +49,7 @@ public class MorseCodeTranslator {
     private static boolean isMenu2(Scanner scan, boolean menuReel) {
         System.out.print("Type morse code and translate it into english or type Quit to exit the program: ");
         System.out.println();
-        String words = scan.nextLine().toUpperCase() + " ";
+        String words = scan.nextLine().toUpperCase();
 
         if (words.equals("QUIT")) menuReel = false;
         MorseCodeLogic mc = new MorseCodeLogic();
